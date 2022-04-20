@@ -39,25 +39,25 @@
         <h6>Metode Farnworth Munsell</h6>
       </div>
     <div class="card text-white bg-info mb-3" style="max-width: 18rem; margin:auto;">
-      <div class="card-header text-center">Login</div>
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Ingat Saya</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
-          </a>
-        </form>
-      </div>
+        <div class="card-header text-center">Login</div>
+        <div class="card-body">
+            <form method="POST" action="{{ route('postlogin') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="login_username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="login_password">
+                </div>
+                {{-- <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Ingat Saya</label>
+                </div> --}}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
     </div>
     <!-- plugins:js -->
     <script src="{{ asset('login-assets') }}/vendors/js/vendor.bundle.base.js"></script>
