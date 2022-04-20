@@ -12,6 +12,15 @@ use App\Models\Login;
 
 class BackController extends Controller
 {
+    public function index()
+    {
+        $session_user = session('data_login');
+        $users = Login::findOrFail($session_user->id);
+        return view('dashboard.index', [
+            'users' => $users
+        ]);
+    }
+
     public function login()
     {
         $users = session('data_login');
