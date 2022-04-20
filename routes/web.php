@@ -1,18 +1,18 @@
 <?php
 
+use App\Http\Controllers\BackController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/login', [BackController::class, 'login'])->name('login');
+Route::get('/register', [BackController::class, 'register'])->name('register');
+Route::post('/login/post', [BackController::class, 'postlogin'])->name('postlogin');
+Route::post('/register/post', [BackController::class, 'postregister'])->name('postregister');
+Route::post('/logout', [BackController::class, 'logout'])->name('logout');
+
+Route::group(['prefix' => '/dashboard'], function () {
+    Route::get('/', [BackController::class, 'index'])->name('dashboard');
+});
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
