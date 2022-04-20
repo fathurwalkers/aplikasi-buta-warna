@@ -63,22 +63,22 @@
     </div>
     <div class="row row-cols-1 justify-content-center mx-auto mb-4">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <div id="elemenkosong17" class="box" data-warna="0" style="background:rgb(55,129,193);"></div>
-            <div id="elemenkosong18" class="box" data-warna="0" onclick="" style="background:white"></div>
-            <div id="elemenkosong19" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong20" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong21" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong22" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong23" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong24" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong25" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong26" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong27" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong28" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong29" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong30" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong31" class="box" data-warna="0" onclick="" style="background:white;"></div>
-            <div id="elemenkosong32" class="box" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault17" class="box" data-id="0" data-warna="0" style="background:rgb(55,129,193);"></div>
+            <div id="elemendefault18" class="box" data-id="0" data-warna="0" onclick="" style="background:white"></div>
+            <div id="elemendefault19" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault20" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault21" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault22" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault23" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault24" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault25" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault26" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault27" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault28" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault29" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault30" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault31" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
+            <div id="elemendefault32" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
         </div>
     </div>
     <div class="row row-cols-1 d-flex justify-content-center mx-auto my-2">
@@ -102,15 +102,14 @@
                 let warna=e.target.dataset.warna;
                 let bgstyle=e.target.style.background;
                 if(warna > 0) {
-                    ambilid = idbox;
+                    ambilid = e.target.dataset.id;
                     ambilwarna = warna;
                     ambilbg = bgstyle;
                     console.log("ambil ada isi nya!");
                 } else {
-                    boxterpilih = document.getElementById(ambilid);
-                    boxterpilih.style.color = "white";
-                    boxterpilih.dataset.warna = 0;
-                    boxterpilih.dataset.id = 0;
+                    // boxterpilih.style.color = "white";
+                    // boxterpilih.dataset.warna = 0;
+                    // boxterpilih.dataset.id = 0;
 
                     e.target.dataset.id = ambilid;
                     e.target.dataset.warna = ambilwarna;
