@@ -12,6 +12,24 @@ use App\Models\Login;
 
 class BackController extends Controller
 {
+    public function login()
+    {
+        $users = session('data_login');
+        if ($users) {
+            return redirect()->route('dashboard');
+        }
+        return view('login');
+    }
+
+    public function register()
+    {
+        $users = session('data_login');
+        if ($users) {
+            return redirect()->route('dashboard');
+        }
+        return view('register');
+    }
+
     public function logout(Request $request)
     {
         $users = session('data_login');
