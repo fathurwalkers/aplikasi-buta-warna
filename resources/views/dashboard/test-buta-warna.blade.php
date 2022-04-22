@@ -153,6 +153,9 @@
                         salah++;
                     }
                 }
+                var totalnilai=(benar/16)*100;
+                console.log("TOTAL BENAR");
+                console.log(totalnilai);
                 console.log("Benar");
                 console.log(benar);
                 console.log("Salah");
@@ -162,7 +165,7 @@
                     url: "{{route('proses-hasil')}}",
                     dataType: 'JSON',
                     data: {
-                        data: arrayHasil,
+                        data: totalnilai,
                         _token: _token
                     },
                     success: function(data) {
@@ -170,9 +173,9 @@
                         alert("success");
                     }
                 });
-                console.log(arrayHasil);
-                console.log(arrayHasil);
-                console.log(arrayHasil);
+                console.log(totalnilai);
+                console.log(totalnilai);
+                console.log(totalnilai);
             });
         });
     </script>
