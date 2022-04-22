@@ -66,7 +66,7 @@
             <a href="#">
                 <div class="card border-danger ">
                     <div class="card-body text-left">
-                        <button type="button" class="btn btn-danger btn-sm">
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modallogout">
                             <i class="bi bi-activity" style="font-size: 1rem; display:inline-block;"></i>
                         </button>
                         <h6 class="card-title font-weight-bold text-danger" style="font-size: 1rem; display: inline-block; margin-left: 40px;">KELUAR</h6>

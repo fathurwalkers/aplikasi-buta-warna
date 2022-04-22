@@ -41,15 +41,24 @@
     <div class="card text-white bg-info mb-3" style="max-width: 18rem; margin:auto;">
         <div class="card-header text-center">Login</div>
         <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <form method="POST" action="{{ route('postlogin') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="login_username">
+                    <label for="login_username">Username</label>
+                    <input type="text" class="form-control" id="login_username" aria-describedby="emailHelp" name="login_username">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="login_password">
+                    <label for="login_password">Password</label>
+                    <input type="password" class="form-control" id="login_password" name="login_password">
                 </div>
                 {{-- <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

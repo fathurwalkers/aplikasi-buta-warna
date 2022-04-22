@@ -14,12 +14,11 @@ class BackController extends Controller
 {
     public function index()
     {
-        // $session_user = session('data_login');
-        // $users = Login::findOrFail($session_user->id);
-        // return view('dashboard.index', [
-        //     'users' => $users
-        // ]);
-        return view('dashboard.index');
+        $session_user = session('data_login');
+        $users = Login::findOrFail($session_user->id);
+        return view('dashboard.index', [
+            'users' => $users
+        ]);
     }
 
     public function login()
