@@ -10,11 +10,10 @@ Route::post('/login/post', [BackController::class, 'postlogin'])->name('postlogi
 Route::post('/register/post', [BackController::class, 'postregister'])->name('postregister');
 Route::post('/logout', [BackController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => '/dashboard'], function () {
+Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function () {
     Route::get('/', [BackController::class, 'index'])->name('dashboard');
     Route::get('/test-buta-warna', [ClientController::class, 'test_buta_warna'])->name('test-buta-warna');
     Route::post('/proses-hasil', [ClientController::class, 'proses_hasil'])->name('proses-hasil');
-    // Route::get('/proses-hasil/{data}', [ClientController::class, 'proses_hasil'])->name('proses-hasil');
 });
 
 Route::get('/', function () {
