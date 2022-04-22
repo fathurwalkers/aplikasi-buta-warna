@@ -101,6 +101,7 @@
             let pallete=document.querySelectorAll('.box');
             var arrayResult = ['1'];
             let arrayBoxKosong = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+            let arrayJawaban = [1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
             let ambilid = 0;
             let ambilwarna = 0;
             let ambilbg = 0;
@@ -143,6 +144,19 @@
                     console.log(getbox);
                     arrayHasil.push(getbox);
                 }
+                var benar = 0;
+                var salah = 0;
+                for (let j = 0; j < 16; j++) {
+                    if (arrayHasil[j] == arrayJawaban[j]) {
+                        benar++;
+                    } else {
+                        salah++;
+                    }
+                }
+                console.log("Benar");
+                console.log(benar);
+                console.log("Salah");
+                console.log(salah);
                 $.ajax({
                     type: "POST",
                     url: "{{route('proses-hasil')}}",
