@@ -169,7 +169,7 @@
                         _token: _token
                     },
                     success: function(data) {
-                        // console.log(jsonparsearray);
+                        console.log(data);
                         alert("success");
                     }
                 });

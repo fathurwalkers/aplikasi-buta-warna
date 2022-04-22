@@ -40,12 +40,8 @@ class ClientController extends Controller
 
     public function proses_hasil(Request $request)
     {
-        $data = $request->all();
-        $data2 = $request->data;
+        $data = $request->data;
         echo "SUCCESS!";
-        dump($data2);
-        dump($data);
-        // die;
-        return redirect()->route('login');
+        dump(intval($data));
     }
 }
