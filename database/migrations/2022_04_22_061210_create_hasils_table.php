@@ -13,7 +13,7 @@ class CreateHasilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hasils', function (Blueprint $table) {
+        Schema::create('hasil', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateHasilsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasils');
+        Schema::dropIfExists('hasil');
     }
 }
