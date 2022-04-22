@@ -63,7 +63,7 @@
     </div>
     <div class="row row-cols-1 justify-content-center mx-auto mb-4">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <div id="elemendefault17" class="box" data-id="0" data-warna="0" style="background:rgb(55,129,193);"></div>
+            <div id="elemendefault17" class="box" data-id="0" data-warna="1" style="background:rgb(55,129,193);"></div>
             <div id="elemendefault18" class="box" data-id="0" data-warna="0" onclick="" style="background:white"></div>
             <div id="elemendefault19" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
             <div id="elemendefault20" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
@@ -81,46 +81,84 @@
             <div id="elemendefault32" class="box" data-id="0" data-warna="0" onclick="" style="background:white;"></div>
         </div>
     </div>
-    <div class="row row-cols-1 d-flex justify-content-center mx-auto my-2">
-        <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mx-auto">
-            <button id="Next" class="btn btn-success d-flex justify-content-center mx-auto">READY!</button>
+    <form action="" method="POST">
+        @csrf
+        <div class="row row-cols-1 d-flex justify-content-center mx-auto my-2">
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mx-auto">
+                <button id="buttonhasil" class="btn btn-success d-flex justify-content-center mx-auto">READY!</button>
+            </div>
         </div>
-    </div>
+    </form>
 
 @endsection
 
 
 @push('js')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
-        let pallete=document.querySelectorAll('.box');
-        let ambilid = 0;
-        let ambilwarna = 0;
-        let ambilbg = 0;
-        pallete.forEach(e => {
-            e.addEventListener("click",function(e){
-                let idbox=e.target.dataset.id;
-                let warna=e.target.dataset.warna;
-                let bgstyle=e.target.style.background;
-                if(warna > 0) {
-                    ambilid = e.target.dataset.id;
-                    ambilwarna = warna;
-                    ambilbg = bgstyle;
-                    console.log("ambil ada isi nya!");
-                } else {
-                    // boxterpilih.style.color = "white";
-                    // boxterpilih.dataset.warna = 0;
-                    // boxterpilih.dataset.id = 0;
+        $(document).ready(function() {
+            let arrayHasil = new Array();
+            let pallete=document.querySelectorAll('.box');
+            var arrayResult = ['1'];
+            let arrayBoxKosong = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+            let ambilid = 0;
+            let ambilwarna = 0;
+            let ambilbg = 0;
+            pallete.forEach(e => {
+                e.addEventListener("click",function(e){
+                    let idbox=e.target.dataset.id;
+                    let warna=e.target.dataset.warna;
+                    let bgstyle=e.target.style.background;
+                    if(warna > 0) {
+                        ambilid = idbox;
+                        ambilwarna = warna;
+                        ambilbg = bgstyle;
+                    }
+                    else {
+                        arrayResult.push(ambilid);
+                        console.log(arrayResult);
 
-                    e.target.dataset.id = ambilid;
-                    e.target.dataset.warna = ambilwarna;
-                    e.target.style.background = ambilbg;
-                    ambilwarna = 0;
-                    ambilbg = 0;
+                        e.target.dataset.id = ambilid;
+                        e.target.dataset.warna = ambilwarna;
+                        e.target.style.background = ambilbg;
+                        ambilwarna = 0;
+                        ambilbg = 0;
+                        ambilid = 0;
+                    }
+                });
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('[name=_token]').val()
                 }
-                console.log(warna);
-                console.log(bgstyle);
-                console.log(ambilwarna);
-                console.log(ambilbg);
+            });
+            $("#buttonhasil").click(function(a) {
+                a.preventDefault();
+                let _token   = $('[name=_token]').val()
+                let jsonparsearray = JSON.stringify(arrayResult);
+                for (let i = 0; i < arrayBoxKosong.length; i++) {
+                    let idtiapbox = "#elemendefault"+arrayBoxKosong[i];
+                    let getbox = $(idtiapbox).data("warna");
+                    console.log(idtiapbox);
+                    console.log(getbox);
+                    arrayHasil.push(getbox);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('proses-hasil')}}",
+                    dataType: 'JSON',
+                    data: {
+                        data: arrayHasil,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        // console.log(jsonparsearray);
+                        alert("success");
+                    }
+                });
+                console.log(arrayHasil);
+                console.log(arrayHasil);
+                console.log(arrayHasil);
             });
         });
     </script>

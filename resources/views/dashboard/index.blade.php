@@ -11,7 +11,7 @@
     <div class="row row-cols-1  justify-content-center">
 
         <div class="col-10 mb-4 btn shadow ">
-            <a href="{{ asset('login-assets') }}/daftarExtra.html">
+            <a href="#">
                 <div class="card border-primary">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-primary btn-sm" >
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-10 mb-4 btn shadow">
-            <a href="{{ asset('login-assets') }}/jadwal.html">
+            <a href="{{ route('test-buta-warna') }}">
                 <div class="card border-warning  ">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-warning btn-sm">
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-10 mb-4 btn shadow">
-            <a href="{{ asset('login-assets') }}/prestasiSiswa.html">
+            <a href="#">
                 <div class="card border-success ">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-success btn-sm">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-10 mb-4 btn shadow">
-            <a href="{{ asset('login-assets') }}/prestasiExt.html">
+            <a href="#">
                 <div class="card border-info ">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-info btn-sm">
@@ -63,7 +63,7 @@
         </div>
 
         <div class="col-10 mb-4 btn shadow">
-            <a href="{{ asset('login-assets') }}/kegiatan.html">
+            <a href="#">
                 <div class="card border-danger ">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-danger btn-sm">
