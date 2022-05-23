@@ -13,6 +13,16 @@ use App\Models\Login;
 
 class ClientController extends Controller
 {
+    public function informasi()
+    {
+        return view('dashboard.informasi');
+    }
+
+    public function tentang_aplikasi()
+    {
+        return view('dashboard.tentang-aplikasi');
+    }
+
     public function test_buta_warna()
     {
         $array_warna = [
@@ -43,5 +53,11 @@ class ClientController extends Controller
         $data = $request->data;
         echo "SUCCESS!";
         dump(intval($data));
+    }
+
+    public function get_proses_hasil($hasil)
+    {
+        dump($hasil);
+        die;
     }
 }

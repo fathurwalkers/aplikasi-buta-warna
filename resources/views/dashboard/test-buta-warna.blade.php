@@ -160,22 +160,25 @@
                 console.log(benar);
                 console.log("Salah");
                 console.log(salah);
-                $.ajax({
-                    type: "POST",
-                    url: "{{route('proses-hasil')}}",
-                    dataType: 'JSON',
-                    data: {
-                        data: totalnilai,
-                        _token: _token
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        alert("success");
-                    }
-                });
-                console.log(totalnilai);
-                console.log(totalnilai);
-                console.log(totalnilai);
+                redirect_to = "{{ route('dashboard') }}/get-proses-hasil" + "/" + totalnilai;
+                window.location.assign(redirect_to);
+                // $.ajax({
+                //     type: "POST",
+                //     url: "{{route('proses-hasil')}}",
+                //     dataType: 'JSON',
+                //     data: {
+                //         data: totalnilai,
+                //         _token: _token
+                //     },
+                //     success: window.location.assign(redirect_to);
+                //     // success: function(data) {
+                //     //     // console.log(data);
+                //     //     redirect_to = "{{ route('dashboard') }}/get-proses-hasil" + "/" + totalnilai;
+                //     //     window.location.href = redirect_to;
+                //     //     alert("success");
+                //     // }
+                // });
+                // console.log(totalnilai);
             });
         });
     </script>
