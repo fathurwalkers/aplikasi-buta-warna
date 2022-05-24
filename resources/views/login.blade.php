@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="images/favicon.png" />
   </head>
   <body>
-    <div class="container1">
+    <div class="container">
       <div class="header">
         <img class="img1" src="images/logosmada.png" alt="" />
         <h5>Aplikasi Tes Buta Warna</h5>
@@ -66,6 +66,11 @@
                 </div> --}}
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+            Belum punya akun? Daftar&nbsp;<a href="{{ route('register') }}">disini</a>&nbsp;sekarang.
         </div>
     </div>
     <!-- plugins:js -->
