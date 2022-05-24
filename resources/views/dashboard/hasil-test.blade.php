@@ -58,7 +58,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <img src="{{ asset('img') }}/{{ $data->hasil_gambar }}" alt="" class="img img-thumbnail" width="500px">
+                    {{-- <img src="{{ asset('img') }}/{{ $data->hasil_gambar }}" alt="" class="img img-thumbnail" width="500px"> --}}
+                    <img src="{{ asset('public/img') }}/error{{ $data->hasil_salah }}.PNG" alt="" class="img img-fluid" width="">
                 </div>
             </div>
             {{-- <div class="row">
