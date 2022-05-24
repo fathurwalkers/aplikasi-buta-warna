@@ -160,7 +160,7 @@
                 console.log(benar);
                 console.log("Salah");
                 console.log(salah);
-                redirect_to = "{{ route('dashboard') }}/get-proses-hasil" + "/" + totalnilai;
+                redirect_to = "{{ route('dashboard') }}/get-proses-hasil" + "/" + totalnilai + "/" + benar + "/" + salah;
                 window.location.assign(redirect_to);
                 // $.ajax({
                 //     type: "POST",
