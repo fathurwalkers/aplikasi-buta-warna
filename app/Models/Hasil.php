@@ -15,6 +15,6 @@ class Hasil extends Model
 
     public function login()
     {
-        return $this->belongsTo(Login::class);
+        return $this->belongsTo(Login::class, 'login_id');
     }
 }

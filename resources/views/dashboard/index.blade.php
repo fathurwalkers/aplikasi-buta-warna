@@ -64,7 +64,7 @@
 
         <div class="col-10 mb-4 btn shadow">
             {{-- <a href="#"> --}}
-                <form action="{{ route('logout') }}" method="POST">
+                <form action="{{ route('logout') }}" method="GET">
                     @csrf
                 <div class="card border-danger ">
                     <div class="card-body text-left">

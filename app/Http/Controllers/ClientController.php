@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hasil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -57,18 +58,55 @@ class ClientController extends Controller
 
     public function get_proses_hasil($hasil, $benar, $salah)
     {
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        $id_user = $users->id;
         $result_hasil = $hasil;
         $result_benar = intval($benar);
         $result_salah = intval($salah);
-        switch ($result_salah) {
-            case 'value':
-                //
-                break;
+
+        if ($result_salah == 0) {
+            $hasil_gambar = "error" . $result_salah . ".png";
+            $hasil_status = "Normal";
+            $hasil_keterangan = "Hasil Normal.";
         }
-        $session_users = session('data_login');
-        $users = Login::find($session_users->id);
-        dump($users);
-        dump($hasil);
-        die;
+        if ($result_salah == 1) {
+            $hasil_gambar = "error" . $result_salah . ".png";
+            $hasil_status = "Normal";
+            $hasil_keterangan = "Hasil Normal.";
+        }
+        if ($result_salah == 2) {
+            $hasil_gambar = "error" . $result_salah . ".png";
+            $hasil_status = "Normal denga Kesalahan Minor";
+            $hasil_keterangan = "Hasil Normal dengan kesalahan Minor";
+        }
+        if ($result_salah >= 3) {
+            $hasil_gambar = "error" . $result_salah . ".png";
+            $hasil_status = "Defiensi Penglihatan Warna";
+            $hasil_keterangan = "Defiensi Penglihatan Warna";
+        }
+
+        $random_str = Str::random(5);
+        $hasil_kode = "HSL" . strtoupper($random_str);
+        $hasil = new Hasil;
+        $save_hasil = $hasil->create([
+            "hasil_gambar" => $hasil_gambar,
+            "hasil_kode" => $hasil_kode,
+            "hasil_status" => $hasil_status,
+            "hasil_nama_pengguna" => $users->login_nama,
+            "hasil_total_nilai" => $result_hasil,
+            "hasil_benar" => $result_benar,
+            "hasil_salah" => $result_salah,
+            "hasil_waktu" => now(),
+            "hasil_keterangan" => $hasil_keterangan,
+            "login_id" => intval($id_user),
+            "created_at" => now(),
+            "updated_at" => now()
+        ]);
+        $save_hasil->save();
+        $data = Hasil::find($save_hasil->id);
+        return view('dashboard.hasil-test', [
+            'data' => $data
+        ]);
     }
 }

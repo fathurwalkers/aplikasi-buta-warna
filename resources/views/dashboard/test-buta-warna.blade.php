@@ -85,7 +85,7 @@
         @csrf
         <div class="row row-cols-1 d-flex justify-content-center mx-auto my-2">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mx-auto">
-                <button id="buttonhasil" class="btn btn-success d-flex justify-content-center mx-auto">READY!</button>
+                <button id="buttonhasil" class="btn btn-success d-flex justify-content-center mx-auto">PROSES</button>
             </div>
         </div>
     </form>
