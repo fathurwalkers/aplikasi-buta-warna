@@ -57,6 +57,9 @@ class ClientController extends Controller
 
     public function get_proses_hasil($hasil)
     {
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        dump($users);
         dump($hasil);
         die;
     }
