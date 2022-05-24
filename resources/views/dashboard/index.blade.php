@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-10 mb-4 btn shadow">
-            <a href="#">
+            <a href="{{ route('riwayat-test') }}">
                 <div class="card border-info ">
                     <div class="card-body text-left">
                         <button type="button" class="btn btn-info btn-sm">

@@ -12,7 +12,10 @@ Route::get('/logout', [BackController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function () {
     Route::get('/', [BackController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ClientController::class, 'profile'])->name('profile');
     Route::get('/informasi', [ClientController::class, 'informasi'])->name('informasi');
+    Route::get('/riwayat-test', [ClientController::class, 'riwayat_test'])->name('riwayat-test');
+    Route::get('/lihat-hasil-test/{id}', [ClientController::class, 'lihat_hasil_test'])->name('lihat-hasil-test');
     Route::get('/tentang-aplikasi', [ClientController::class, 'tentang_aplikasi'])->name('tentang-aplikasi');
     Route::get('/test-buta-warna', [ClientController::class, 'test_buta_warna'])->name('test-buta-warna');
     Route::post('/proses-hasil', [ClientController::class, 'proses_hasil'])->name('proses-hasil');

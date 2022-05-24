@@ -19,6 +19,33 @@ class ClientController extends Controller
         return view('dashboard.informasi');
     }
 
+    public function profile()
+    {
+        $session_users = session('data_login');
+        $data = Login::find($session_users->id);
+        return view('dashboard.profile', [
+            'data' => $data
+        ]);
+    }
+
+    public function riwayat_test()
+    {
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        $data = Hasil::where('login_id', $users->id)->get();
+        return view('dashboard.riwayat-test', [
+            'data' => $data
+        ]);
+    }
+
+    public function lihat_hasil_test($id)
+    {
+        $data = Hasil::find($id);
+        return view('dashboard.lihat-hasil-test', [
+            'data' => $data
+        ]);
+    }
+
     public function tentang_aplikasi()
     {
         return view('dashboard.tentang-aplikasi');
