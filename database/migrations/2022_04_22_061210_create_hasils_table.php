@@ -10,6 +10,8 @@ class CreateHasilsTable extends Migration
     {
         Schema::create('hasil', function (Blueprint $table) {
             $table->id();
+            $table->integer('hasil_protan');
+            $table->integer('hasil_deutan');
             $table->string('hasil_gambar');
             $table->string('hasil_kode');
             $table->string('hasil_status');

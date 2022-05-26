@@ -38,7 +38,7 @@
             <div class="box gray" data-warna="lightgray"></div> --}}
             {{-- @dd($acak_warna) --}}
 
-            <div id="elemendefault1" class="box" data-id="1" data-warna="1" style="background:lightgray;"></div>
+            <div id="elemendefault1" class="box" data-id="1" data-warna="1" style="background:rgb(125, 141, 119);"></div>
             @foreach($acak_warna as $item)
                 <div id="elemendefault2" class="box" data-id="{{ $item[1] }}" data-warna="{{ $item[1] }}" style="background:{{ $item[0] }};"></div>
             @endforeach
@@ -100,7 +100,8 @@
             let arrayHasil = new Array();
             let pallete=document.querySelectorAll('.box');
             var arrayResult = ['1'];
-            let arrayBoxKosong = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+            // let arrayBoxKosong = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+            let arrayBoxKosong = [1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
             let arrayJawaban = [1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
             let ambilid = 0;
             let ambilwarna = 0;
@@ -116,7 +117,10 @@
                         ambilbg = bgstyle;
                     }
                     else {
-                        arrayResult.push(ambilid);
+                        // arrayResult.push(ambilid);
+                        if (arrayResult.length <= 15) {
+                            arrayResult.push(ambilid);
+                        }
                         console.log(arrayResult);
 
                         e.target.dataset.id = ambilid;

@@ -85,13 +85,43 @@ class ClientController extends Controller
 
     public function get_proses_hasil($hasil, $benar, $salah, $result)
     {
-        dd($result);
+        $array_jawaban = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
+        $array_protan = ['1', '16', '2', '15', '3', '14', '13', '4', '5', '12', '11', '6', '10', '7', '9', '8'];
+        $array_deutan = ['1', '2', '16', '3', '4', '15', '14', '5', '13', '6', '12', '7', '8', '11', '10', '9'];
+        $array_result = explode(',', $result);
+        $protan = 0;
+        $deutan = 0;
+        $nilai_error = 0;
+        for ($i=0; $i < count($array_result); $i++) {
+            if ($array_result[$i] == $array_protan[$i]) {
+                $protan++;
+            }
+        }
+        for ($i=0; $i < count($array_result); $i++) {
+            if ($array_result[$i] == $array_deutan[$i]) {
+                $deutan++;
+            }
+        }
+        for ($i=0; $i < count($array_result); $i++) {
+            if ($array_result[$i] != $array_jawaban[$i]) {
+                $nilai_error++;
+            }
+        }
+
+        // dump($deutan);
+        // dump($protan);
+        // dump($array_result);
+        // dd($result);
         $session_users = session('data_login');
         $users = Login::find($session_users->id);
         $id_user = $users->id;
         $result_hasil = $hasil;
         $result_benar = intval($benar);
         $result_salah = intval($salah);
+
+        // RESULT NEW
+
+        // END RESULT NEW
 
         if ($result_salah == 0) {
             $hasil_gambar = "error" . $result_salah . ".png";
@@ -118,13 +148,16 @@ class ClientController extends Controller
         $hasil_kode = "HSL" . strtoupper($random_str);
         $hasil = new Hasil;
         $save_hasil = $hasil->create([
+            "hasil_protan" => intval($protan),
+            "hasil_deutan" => intval($deutan),
             "hasil_gambar" => $hasil_gambar,
             "hasil_kode" => $hasil_kode,
             "hasil_status" => $hasil_status,
             "hasil_nama_pengguna" => $users->login_nama,
             "hasil_total_nilai" => $result_hasil,
             "hasil_benar" => $result_benar,
-            "hasil_salah" => $result_salah,
+            // "hasil_salah" => $result_salah,
+            "hasil_salah" => $nilai_error,
             "hasil_waktu" => now(),
             "hasil_keterangan" => $hasil_keterangan,
             "login_id" => intval($id_user),
