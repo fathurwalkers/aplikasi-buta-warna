@@ -83,8 +83,9 @@ class ClientController extends Controller
         dump(intval($data));
     }
 
-    public function get_proses_hasil($hasil, $benar, $salah)
+    public function get_proses_hasil($hasil, $benar, $salah, $result)
     {
+        dd($result);
         $session_users = session('data_login');
         $users = Login::find($session_users->id);
         $id_user = $users->id;
